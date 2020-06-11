@@ -66,7 +66,8 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" width="472" class-name="small-padding fixed-width">
-        <template slot-scope="{row,$index}">
+        <template slot-scope="{row}">
+          <!-- <template slot-scope="{row,$index}"> -->
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             编辑课程
           </el-button>

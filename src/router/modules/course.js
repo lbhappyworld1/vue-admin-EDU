@@ -18,6 +18,12 @@ const courseRouter = {
       meta: { title: '课程列表' }
     },
     {
+      path: 'create',
+      component: () => import('@/views/course/create'),
+      name: 'CreateCourse',
+      meta: { title: '创建课程', icon: 'edit' }
+    },
+    {
       path: 'export-excel',
       component: () => import('@/views/excel/export-excel'),
       name: 'ExportExcel',
