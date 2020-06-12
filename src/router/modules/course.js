@@ -22,25 +22,13 @@ const courseRouter = {
       component: () => import('@/views/course/create'),
       name: 'CreateCourse',
       meta: { title: '创建课程', icon: 'edit' }
-    },
-    {
-      path: 'export-excel',
-      component: () => import('@/views/excel/export-excel'),
-      name: 'ExportExcel',
-      meta: { title: '课程列表' }
-    },
-    {
-      path: 'export-excel',
-      component: () => import('@/views/excel/export-excel'),
-      name: 'ExportExcel',
-      meta: { title: '查看课程' }
-    },
-    {
-      path: 'export-selected-excel',
-      component: () => import('@/views/excel/select-excel'),
-      name: 'SelectExcel',
-      meta: { title: '创建课程' }
     }
+    // {
+    //   path: 'chapter-create',
+    //   component: () => import('@/views/course/chapter-create'),
+    //   name: 'CreateCourse',
+    //   meta: { title: '创建课程', icon: 'edit' }
+    // }
   ]
 }
 export default courseRouter

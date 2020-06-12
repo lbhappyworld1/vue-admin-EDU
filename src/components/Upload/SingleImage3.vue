@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="image-preview">
+    <div v-if="ishowPrew2" class="image-preview">
       <div v-show="imageUrl.length>1" class="image-preview-wrapper">
         <img :src="imageUrl">
         <div class="image-preview-action">
@@ -42,6 +42,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    ishowPrew2: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

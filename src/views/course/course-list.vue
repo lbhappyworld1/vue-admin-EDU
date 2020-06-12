@@ -59,7 +59,7 @@
         <template slot-scope="{row}">
           <!-- <div>{{ row.couser_teachers }}</div> -->
           <div class="couser_teacher_cl">
-            <el-tag v-for="(n, index ) in row.couser_teachers" :key="index" :type="info">
+            <el-tag v-for="(n, index ) in row.couser_teachers" :key="index" type="info">
               {{ n }}
             </el-tag>
           </div>

@@ -3,60 +3,70 @@
     <!-- <el-row type="flex" class="row-bg" justify="left">
       <el-col :span="6"></el-col>
     </el-row> -->
-    <!-- <el-row :gutter="20" type="flex" justify="strat" style="width: 100%"> -->
-    <!-- <el-col :span="6"><div class="grid-content bg-purple" center>创建课程</div></el-col> -->
+    <div class="titleT">创建课程</div>
+    <el-row :gutter="20" type="flex" justify="strat" style="width: 100%">
+      <el-col :span="18">
+        <el-form ref="form" :model="form" label-width="100px">
+          <el-form-item label="课程名称">
+            <el-input v-model="form.name" />
+          </el-form-item>
+          <el-form-item label="课程简介">
+            <el-input v-model="form.name2" />
+          </el-form-item>
+          <el-form-item label="课程封面" prop="image_uri" style="margin-bottom: 30px;">
+            <Upload v-model="form.image_uri" />
+          </el-form-item>
+          <el-form-item label="课程介绍" prop="content" style="margin-bottom: 30px;">
+            <Tinymce ref="editor" v-model="form.content" :height="200" />
+          </el-form-item>
+          <el-form-item label="上课教师" prop="content" style="margin-bottom: 30px;">
+            <div class="beginclass">
+              <el-row :gutter="20" align="start">
+                <el-col v-for="(bitem,index) in ['教师1','教师2','教师3','教师4']" :key="index" :span="6" class="bitemclass">
+                  <div>{{ bitem }}</div>
+                  <i class="el-icon-circle-close coursedelete" />
+                </el-col>
+              </el-row>
+            </div>
+            <el-button type="primary" @click="onSubmit">添加上课教师</el-button>
+          </el-form-item>
+          <el-form-item label="学习人数">
+            <el-input v-model="form.learnpeoples" />
+          </el-form-item>
+          <el-form-item label="课程价格">
+            <el-input v-model="form.learnprices" />
+          </el-form-item>
+          <el-form-item label="试看时间">
+            <el-date-picker v-model="form.time" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="请选择时间" />
+          </el-form-item>
+          <el-form-item label="排序号">
+            <el-input v-model="form.pnumber" />
+          </el-form-item>
+          <el-form-item label="是否推荐">
+            <el-select v-model="form.ispush" default-first-option remote placeholder="请选择">
+              <el-option :label="是" :value="1" />
+              <el-option :label="否" :value="0" />
+            </el-select>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">保存</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
     <!-- <el-col :span="20"><div class="grid-content bg-purple">创建课程</div></el-col> -->
-    <!-- </el-row> -->
-    <el-form ref="form" :model="form" label-width="90px">
-      <el-form-item label="创建课程" class="titleT" />
-      <el-form-item label="活动名称">
-        <el-input v-model="form.name" />
-      </el-form-item>
-      <el-form-item label="活动区域">
-        <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai" />
-          <el-option label="区域二" value="beijing" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="活动时间">
-        <el-col :span="11">
-          <el-date-picker v-model="form.date1" type="date" placeholder="选择日期" style="width: 100%;" />
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-time-picker v-model="form.date2" placeholder="选择时间" style="width: 100%;" />
-        </el-col>
-      </el-form-item>
-      <el-form-item label="即时配送">
-        <el-switch v-model="form.delivery" />
-      </el-form-item>
-      <el-form-item label="活动性质">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type" />
-          <el-checkbox label="地推活动" name="type" />
-          <el-checkbox label="线下主题活动" name="type" />
-          <el-checkbox label="单纯品牌曝光" name="type" />
-        </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="特殊资源">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="线上品牌商赞助" />
-          <el-radio label="线下场地免费" />
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="活动形式">
-        <el-input v-model="form.desc" type="textarea" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
-      </el-form-item>
-    </el-form>
+    </el-row>
+
   </div>
 </template>
 
 <script>
+import Upload from '@/components/Upload/SingleImage3'
+import Tinymce from '@/components/Tinymce'
 export default {
+  name: 'CourseCreate',
+  components: { Upload, Tinymce },
   data() {
     return {
       form: {
@@ -85,6 +95,7 @@ export default {
     margin: 16px 0px 0px 16px;
     border: 1px solid #EBEEF5;
     border-radius: 5px;
+    margin-bottom: 30px;
   }
   .el-input{
     margin-right: 10px;
@@ -92,7 +103,42 @@ export default {
   }
 
   .titleT{
-    background-color: aqua;
+    // margin-top: 10px;
+    background-color: #EBEEF5;
+    margin-bottom: 10px;
+    line-height: 30px;
+    padding-top: 10px;
+    padding-left: 18px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+    // color: #606266;
+    vertical-align:middle;
+  }
+
+  .beginclass{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    // margin-left: 50px;
+    padding-left: 10px;
+    width: 100%;
+  }
+  .bitemclass{
+    border: 1px solid gray;
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    .coursedelete{
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      color: red;
+    }
   }
 </style>
 
