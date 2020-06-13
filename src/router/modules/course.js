@@ -28,6 +28,18 @@ const courseRouter = {
       component: () => import('@/views/course/chapter-create'),
       name: 'CreateCourse',
       meta: { title: '创建章节（混播课）' }
+    },
+    {
+      path: 'chapter-create-spot',
+      component: () => import('@/views/course/chapter-create-spot'),
+      name: 'CreateCourse',
+      meta: { title: '创建章节（点播课）' }
+    },
+    {
+      path: 'chapter-create-online',
+      component: () => import('@/views/course/chapter-create-online'),
+      name: 'CreateCourse',
+      meta: { title: '创建章节（直播课）' }
     }
   ]
 }

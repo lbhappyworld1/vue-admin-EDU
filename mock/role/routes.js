@@ -22,16 +22,16 @@ export const constantRoutes = [
     component: 'views/login/auth-redirect',
     hidden: true
   },
-  {
-    path: '/404',
-    component: 'views/error-page/404',
-    hidden: true
-  },
-  {
-    path: '/401',
-    component: 'views/error-page/401',
-    hidden: true
-  },
+  // {
+  //   path: '/404',
+  //   component: 'views/error-page/404',
+  //   hidden: true
+  // },
+  // {
+  //   path: '/401',
+  //   component: 'views/error-page/401',
+  //   hidden: true
+  // },
   {
     path: '',
     component: 'layout/Layout',
@@ -184,18 +184,12 @@ export const asyncRoutes = [
         name: 'CountToDemo',
         meta: { title: 'Count To' }
       },
-      {
-        path: 'mixin',
-        component: 'views/components-demo/mixin',
-        name: 'ComponentMixinDemo',
-        meta: { title: 'componentMixin' }
-      },
-      {
-        path: 'back-to-top',
-        component: 'views/components-demo/back-to-top',
-        name: 'BackToTopDemo',
-        meta: { title: 'Back To Top' }
-      },
+      // {
+      //   path: 'back-to-top',
+      //   component: 'views/components-demo/back-to-top',
+      //   name: 'BackToTopDemo',
+      //   meta: { title: 'Back To Top' }
+      // },
       {
         path: 'drag-dialog',
         component: 'views/components-demo/drag-dialog',
@@ -358,30 +352,30 @@ export const asyncRoutes = [
     ]
   },
 
-  {
-    path: '/error',
-    component: 'layout/Layout',
-    redirect: 'noRedirect',
-    name: 'ErrorPages',
-    meta: {
-      title: 'Error Pages',
-      icon: '404'
-    },
-    children: [
-      {
-        path: '401',
-        component: 'views/error-page/401',
-        name: 'Page401',
-        meta: { title: 'Page 401', noCache: true }
-      },
-      {
-        path: '404',
-        component: 'views/error-page/404',
-        name: 'Page404',
-        meta: { title: 'Page 404', noCache: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/error',
+  //   component: 'layout/Layout',
+  //   redirect: 'noRedirect',
+  //   name: 'ErrorPages',
+  //   meta: {
+  //     title: 'Error Pages',
+  //     icon: '404'
+  //   },
+  //   children: [
+  //     {
+  //       path: '401',
+  //       component: 'views/error-page/401',
+  //       name: 'Page401',
+  //       meta: { title: 'Page 401', noCache: true }
+  //     },
+  //     {
+  //       path: '404',
+  //       component: 'views/error-page/404',
+  //       name: 'Page404',
+  //       meta: { title: 'Page 404', noCache: true }
+  //     }
+  //   ]
+  // },
 
   {
     path: '/error-log',

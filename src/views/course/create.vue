@@ -28,7 +28,7 @@
                 </el-col>
               </el-row>
             </div>
-            <el-button type="primary" @click="onSubmit">添加上课教师</el-button>
+            <el-button type="primary" @click="addTeacher">添加上课教师</el-button>
           </el-form-item>
           <el-form-item label="学习人数">
             <el-input v-model="form.learnpeoples" />
@@ -57,12 +57,37 @@
       </el-col>
     <!-- <el-col :span="20"><div class="grid-content bg-purple">创建课程</div></el-col> -->
     </el-row>
-
+    <el-dialog title="添加上课教师" :visible.sync="isShowCreateTeacher">
+      <el-row type="flex" justify="space-between" class="searchbtn">
+        <el-col :span="8">
+          <el-row type="flex" justify="space-between">
+            <el-input v-model="input" placeholder="请输入教师名称进行搜索" />
+            <el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>
+          </el-row>
+        </el-col>
+        <el-col :span="8" :push="4">
+          <el-button type="primary" size="small">新建老师</el-button>
+        </el-col>
+      </el-row>
+      <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
+        <el-table-column prop="key" label="教师名称" />
+        <el-table-column prop="pv" label="操作" />
+      </el-table>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="onCancel">
+          取消
+        </el-button>
+        <el-button type="primary" @click="onConfirm">
+          确认
+        </el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import Upload from '@/components/Upload/SingleImage3'
+import { fetchPv } from '@/api/course'
+import Upload from './components/SingleImage3'
 import Tinymce from '@/components/Tinymce'
 export default {
   name: 'CourseCreate',
@@ -78,12 +103,26 @@ export default {
         type: [],
         resource: '',
         desc: ''
-      }
+      },
+      isShowCreateTeacher: false,
+      pvData: []
     }
   },
   methods: {
     onSubmit() {
       console.log('submit!')
+    },
+    addTeacher() {
+      fetchPv(1101).then(response => {
+        this.pvData = response.data.pvData
+        this.isShowCreateTeacher = true
+      })
+    },
+    onConfirm() {
+      this.isShowCreateTeacher = false
+    },
+    onCancel() {
+      this.isShowCreateTeacher = false
     }
   }
 }
@@ -140,5 +179,10 @@ export default {
       color: red;
     }
   }
+  .searchbtn{
+    margin-bottom: 20px;
+    margin-left: 50px;
+  }
+
 </style>
 
