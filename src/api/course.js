@@ -1,8 +1,16 @@
 import request from '@/utils/request'
-
+// 获取课程列表
 export function fetchList(query) {
   return request({
     url: '/course/list',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchChapterList(query) {
+  return request({
+    url: '/chapter/list',
     method: 'get',
     params: query
   })

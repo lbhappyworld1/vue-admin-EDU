@@ -21,14 +21,14 @@ const courseRouter = {
       path: 'create',
       component: () => import('@/views/course/create'),
       name: 'CreateCourse',
-      meta: { title: '创建课程', icon: 'edit' }
+      meta: { title: '创建课程' }
+    },
+    {
+      path: 'chapter-create',
+      component: () => import('@/views/course/chapter-create'),
+      name: 'CreateCourse',
+      meta: { title: '创建章节（混播课）' }
     }
-    // {
-    //   path: 'chapter-create',
-    //   component: () => import('@/views/course/chapter-create'),
-    //   name: 'CreateCourse',
-    //   meta: { title: '创建课程', icon: 'edit' }
-    // }
   ]
 }
 export default courseRouter
